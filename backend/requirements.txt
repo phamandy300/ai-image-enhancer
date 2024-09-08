@@ -1,6 +1,6 @@
-fastapi==0.113.0
-gunicorn==23.0.0
-pillow==10.4.0
+fastapi==0.114.0
+Pillow==10.4.0
 RealESRGAN @ git+https://github.com/sberbank-ai/Real-ESRGAN.git@362a0316878f41dbdfbb23657b450c3353de5acf
-torch==2.4.1
+torch==2.4.1+cpu
+-f https://download.pytorch.org/whl/cpu/torch_stable.html
 uvicorn==0.30.6
