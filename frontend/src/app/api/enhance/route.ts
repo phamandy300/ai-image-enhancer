@@ -1,8 +1,7 @@
 // src/app/api/enhance/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
-// const BACKEND_URL = process.env.BACKEND_URL || 'https://your-ai-backend.herokuapp.com';
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8000';
+const BACKEND_URL = process.env.BACKEND_URL || 'https://a-eyes.onrender.com';
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
