@@ -19,7 +19,7 @@ app.add_middleware(
 )
 
 # Load the Real-ESRGAN model
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cpu')
 model = RealESRGAN(device, scale=4)
 model.load_weights('weights/RealESRGAN_x4.pth', download=True)  # Ensure the path and download are correct
 
@@ -41,4 +41,4 @@ async def enhance_image(file: UploadFile = File(...)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=5000)
