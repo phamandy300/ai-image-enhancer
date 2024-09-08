@@ -2,3 +2,5 @@ fastapi==0.114.0
 Pillow==10.4.0
 uvicorn==0.30.6
 RealESRGAN @ git+https://github.com/phamandy300/Real-ESRGAN.git@main#egg=realesrgan
+torch==1.7+cpu
+torchvision==0.8.0+cpu
