@@ -1,6 +1,6 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.3.0+cpu
-torchvision==0.19.1+cpu
+torchvision==0.18.1+cpu
 RealESRGAN @ git+https://github.com/phamandy300/Real-ESRGAN.git@main#egg=realesrgan
 fastapi==0.114.0
 Pillow==10.4.0
