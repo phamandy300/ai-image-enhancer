@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { useDropzone, DropzoneRootProps } from 'react-dropzone';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react'; // Import the X icon from lucide-react
+import { motion, AnimatePresence, MotionProps } from 'framer-motion';
+import { X } from 'lucide-react';
 
 interface UploadedImage {
   file: File;
@@ -12,6 +12,8 @@ interface UploadedImage {
   enhanced?: string;
   enhancedBlob?: Blob;
 }
+
+type MotionDropzoneProps = MotionProps & DropzoneRootProps;
 
 export default function Home() {
   const [images, setImages] = useState<UploadedImage[]>([]);
@@ -81,6 +83,7 @@ export default function Home() {
       document.body.appendChild(link);
       link.click();
       link.parentNode?.removeChild(link);
+      window.URL.revokeObjectURL(url);
     }
   };
 
@@ -94,7 +97,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-gray-900 text-center mb-8">AI Image Enhancer</h1>
         
         <motion.div
-          {...getRootProps()}
+          {...getRootProps() as MotionDropzoneProps}
           className={`border-2 border-dashed rounded-lg p-12 mb-8 text-center cursor-pointer transition-colors ${
             isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
           }`}
@@ -137,7 +140,6 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  {/* Delete button */}
                   <motion.button
                     onClick={() => deleteImage(index)}
                     className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors z-10"
