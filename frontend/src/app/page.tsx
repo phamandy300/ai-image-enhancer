@@ -1,5 +1,6 @@
 'use client';
 
+import { Analytics } from "@vercel/analytics/react"
 import React, { useState, useCallback } from 'react';
 import { useDropzone, DropzoneRootProps } from 'react-dropzone';
 import Image from 'next/image';
