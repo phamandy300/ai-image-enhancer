@@ -4,6 +4,7 @@ import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react'; // Import the X icon from lucide-react
 
 interface UploadedImage {
   file: File;
@@ -83,6 +84,10 @@ export default function Home() {
     }
   };
 
+  const deleteImage = (index: number) => {
+    setImages(prevImages => prevImages.filter((_, i) => i !== index));
+  };
+
   return (
     <main className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
@@ -127,11 +132,21 @@ export default function Home() {
               {images.map((image, index) => (
                 <motion.div
                   key={index}
-                  className="space-y-4 bg-white p-4 rounded-lg shadow-md"
+                  className="space-y-4 bg-white p-4 rounded-lg shadow-md relative"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
+                  {/* Delete button */}
+                  <motion.button
+                    onClick={() => deleteImage(index)}
+                    className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors z-10"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <X size={16} />
+                  </motion.button>
+
                   <div className="relative h-48 rounded-md overflow-hidden">
                     <Image
                       src={image.preview}

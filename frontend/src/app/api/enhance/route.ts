@@ -1,7 +1,7 @@
 // src/app/api/enhance/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'https://a-eyes.onrender.com';
+const BACKEND_URL = process.env.BACKEND_URL;
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
